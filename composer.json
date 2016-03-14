@@ -1,0 +1,27 @@
+{
+    "name": "tembra/auth0-lumen",
+    "description": "Lumen plugin that helps authenticate with the auth0 service",
+    "keywords": ["lumen","auth0","dingo","api","restful","auth","authentication"],
+    "homepage": "https://github.com/tembra/auth0-lumen",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Thieres Tembra",
+            "email": "tdt@mytdt.com.br",
+            "homepage": "http://www.mytdt.com.br",
+            "role": "CEO"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/http": "~5.1",
+        "illuminate/support": "~5.1",
+        "auth0/auth0-php": "^3.1",
+        "dingo/api": "~1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mytdt\\Auth0\\Lumen\\": "src/"
+        }
+    }
+}
