@@ -25,6 +25,5 @@
         "psr-4": {
             "Mytdt\\Auth0\\Lumen\\": "src/"
         }
-    },
-    "minimum-stability": "dev-master"
+    }
 }
