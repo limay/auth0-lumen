@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Mytdt\Auth0\Lumen\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use RuntimeException;

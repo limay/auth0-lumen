@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Mytdt\Auth0\Lumen\Providers;
 
 use Auth0\SDK\Auth0JWT;
 use Auth0\SDK\Exception\CoreException;
