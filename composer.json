@@ -1,6 +1,6 @@
 {
     "name": "tembra/auth0-lumen",
-    "description": "Lumen plugin that helps authenticate with the auth0 service",
+    "description": "Lumen plugin that helps authenticate with the auth0 service.",
     "keywords": ["lumen","auth0","dingo","api","restful","auth","authentication"],
     "homepage": "https://github.com/tembra/auth0-lumen",
     "license": "MIT",
@@ -18,8 +18,8 @@
         "illuminate/support": "~5.1",
         "auth0/auth0-php": "^3.1"
     },
-    "suggests": {
-        "dingo/api": "~1.0"  
+    "suggest": {
+        "dingo/api": "A RESTful API package for the Laravel and Lumen frameworks."
     },
     "autoload": {
         "psr-4": {
