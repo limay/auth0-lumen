@@ -2,7 +2,7 @@
 
 namespace Mytdt\Auth0\Lumen\Contracts;
 
-interface UserContract {
+interface UserRepositoryContract {
 
     /**
      * @param stdClass $jwt with the data provided in the JWT

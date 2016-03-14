@@ -7,7 +7,7 @@ use Auth0\SDK\Exception\CoreException;
 use Dingo\Api\Auth\Provider\Authorization;
 use Dingo\Api\Routing\Route;
 use Illuminate\Http\Request;
-use Mytdt\Auth0\Lumen\Contracts\Auth0UserRepository;
+use Mytdt\Auth0\Lumen\Contracts\UserRepositoryContract;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
@@ -15,7 +15,7 @@ class Auth0DingoProvider extends Authorization
 {
     protected $userRepository;
 
-    public function __construct(Auth0UserRepository $userRepository)
+    public function __construct(UserRepositoryContract $userRepository)
     {
         $this->userRepository = $userRepository;
     }
