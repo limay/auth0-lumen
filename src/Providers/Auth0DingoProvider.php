@@ -13,13 +13,34 @@ use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
 class Auth0DingoProvider extends Authorization
 {
+    /**
+     * The user repository of the provider.
+     * 
+     * @var Mytdt\Auth0\Lumen\Contracts\UserRepositoryContract
+     */
     protected $userRepository;
 
+    /**
+     * Create a new Auth0DingoProvider instance.
+     * 
+     * @param Mytdt\Auth0\Lumen\Contracts\UserRepositoryContract $userRepository
+     */
     public function __construct(UserRepositoryContract $userRepository)
     {
         $this->userRepository = $userRepository;
     }
 
+    /**
+     * Authenticate the request and return the authenticated user instance.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param \Dingo\Api\Routing\Route $route
+     *
+     * @throws BadRequestHttpException   if no token is provided.
+     * @throws UnauthorizedHttpException if invalid token or unauthorized user.
+     * 
+     * @return \Illuminate\Contracts\Auth\Authenticatable
+     */
     public function authenticate(Request $request, Route $route)
     {
         $this->validateAuthorizationHeader($request);
@@ -39,27 +60,22 @@ class Auth0DingoProvider extends Authorization
             $token = Auth0JWT::decode($encToken, $clientId, $clientSecret);
         } catch (CoreException $e) {
             throw new UnauthorizedHttpException('Auth0', 'Unable to authenticate with invalid token.');
-        } catch (Exception $e) {
-            throw new UnauthorizedHttpException('Auth0', $e->getMessage(), $e);
         }
 
         // if it does not represent a valid user, return a HTTP 401
-        try {
-            $user = $this->userRepository->getUserByDecodedJWT($token);
-        } catch (Exception $e) {
-            throw new UnauthorizedHttpException('Auth0', 'User credentials not found.');
-        }
-
+        $user = $this->userRepository->getUserByDecodedJWT($token);
         if (!$user) {
             throw new UnauthorizedHttpException('Auth0', 'Unauthorized user.');
         }
 
-        //$auth0_id = str_replace('auth0|', '', $user->sub);
-        //$user = \App\User::where(['auth0_id' => $auth0_id])->firstOrFail();
-
         return $user;
     }
 
+    /**
+     * Get the providers authorization method.
+     *
+     * @return string
+     */
     public function getAuthorizationMethod()
     {
         return 'bearer';
