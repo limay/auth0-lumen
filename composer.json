@@ -14,9 +14,9 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "illuminate/http": "~5.1",
-        "illuminate/support": "~5.1",
-        "auth0/auth0-php": "^3.1"
+        "illuminate/http": "~5.2",
+        "illuminate/support": "~5.2",
+        "auth0/auth0-php": "^3.4"
     },
     "suggest": {
         "dingo/api": "A RESTful API package for the Laravel and Lumen frameworks."
